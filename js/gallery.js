@@ -87,6 +87,9 @@ function createGallery(array) {
 galler.insertAdjacentHTML("beforeend", createGallery(images));
 
 // Стилі для галереї
+galler.style.width = "1440px";
+galler.style.height = "696px";
+galler.style.margin = "24px 156px";
 galler.style.gap = "24px";
 galler.style.display = "flex";
 galler.style.flexWrap = "wrap";
