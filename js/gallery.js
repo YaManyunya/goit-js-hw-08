@@ -64,32 +64,37 @@ const images = [
   },
 ];
 
+// Галерея
+
 const galler = document.querySelector(".gallery");
 
-function createGaller(mas) {
-  return mas.map(image => `
+// Створюємо HTML галереї
+function createGallery(array) {
+  return array.map(image => `
     <li class="gallery-item">
-      <a class="gallery-link" href="large-image.jpg">
-      <img
-       class="gallery-image"
-        src="small-image.jpg"
-        data-source="large-image.jpg"
-        alt="Image description"
-     />
-     </a>
+      <a class="gallery-link" href="${image.original}">
+        <img
+          class="gallery-image"
+          src="${image.preview}"
+          data-source="${image.original}"
+          alt="${image.description}"
+        />
+      </a>
     </li>
   `).join("");
 }
 
-galler.insertAdjacentHTML("beforeend",createGaller(images));
+galler.insertAdjacentHTML("beforeend", createGallery(images));
 
+// Стилі для галереї
+galler.style.gap = "24px";
 galler.style.display = "flex";
 galler.style.flexWrap = "wrap";
-galler.style.gap = "24px";
 galler.style.justifyContent = "center";
 galler.style.alignItems = "center";
 galler.style.listStyle = "none"; // прибрати крапки
 
+// Стилі для елементів
 const galleryItems = document.querySelectorAll(".gallery-item");
 galleryItems.forEach(item => {
   item.style.width = "360px";
@@ -103,6 +108,7 @@ galleryItems.forEach(item => {
   img.style.height = "100%";
 });
 
+// Делегування кліку + модалка
 galler.addEventListener("click", (event) => {
   event.preventDefault();
 
